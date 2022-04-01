@@ -1,0 +1,18 @@
+name: CommentWorkflow
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  wait_for_resource:
+    name: Rebase
+    if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/re-build')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Acknowledge emoji
+        uses: actions-cool/emoji-helper@v1.0.0
+        with:
+          type: 'comment'
+          emoji: '+1'
+          token: ${{secrets.GH_TOKEN}}
+          comment-id: ${{github.event.comment.id}}
+      
