@@ -22,7 +22,7 @@ jobs:
         with:
           script: |
             const script = require('./script.js')
-            return script({github, context})
+            return script({context, ${secrets.GH_TOKEN}})
           result-encoding: string
       - name: Get result
         run: echo "${{steps.script.outputs.result}}"
