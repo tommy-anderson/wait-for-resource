@@ -16,6 +16,7 @@ jobs:
           token: ${{secrets.GH_TOKEN}}
           comment-id: ${{github.event.comment.id}}
       - uses: actions/checkout@v2
+      - run: ls
       - uses: actions/github-script@v6
         with:
           script: |
