@@ -19,7 +19,7 @@ jobs:
       - uses: actions/github-script@v6
         with:
           script: |
-            const script = require('script.js')
+            const script = require('./script.js')
             return script({github, context})
           result-encoding: string
       - name: Get result
