@@ -18,10 +18,11 @@ jobs:
       - uses: actions/checkout@v2
       - run: ls
       - uses: actions/github-script@v6
+        id: script
         with:
           script: |
             const script = require('./script.js')
             return script({github, context})
           result-encoding: string
       - name: Get result
-        run: echo "${{steps.set-result.outputs.result}}"
+        run: echo "${{steps.script.outputs.result}}"
