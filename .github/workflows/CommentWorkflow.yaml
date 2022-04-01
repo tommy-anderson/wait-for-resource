@@ -18,11 +18,14 @@ jobs:
       - uses: actions/checkout@v2
       - run: ls
       - uses: actions/github-script@v6
+        env:
+          token: ${{secrets.GH_TOKEN}}
         id: script
         with:
           script: |
+           const { token } = process.env
             const script = require('./script.js')
-            return script(context, ${secrets.GH_TOKEN})
+            return script(context, token)
           result-encoding: string
       - name: Get result
         run: echo "${{steps.script.outputs.result}}"
