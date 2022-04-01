@@ -3,5 +3,5 @@ module.exports = (context,token) => {
   const {issue} = payload
   const {pull_request} = issue
   console.log(JSON.stringify(pull_request))
-    return payload.comments.user.id.toString()
+    return payload.comment.user.id.toString()
   }
