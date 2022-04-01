@@ -1,4 +1,4 @@
-module.exports = ({context,token}) => {
+module.exports = (context,token) => {
   const {payload} = context;
   const {issue} = payload;
   const {pull_request} = issue
